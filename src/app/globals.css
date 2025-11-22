@@ -327,6 +327,37 @@ li {
   cursor: pointer !important;
 }
 
+.btn-disconnect {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;       /* px-7 py-3 */
+  font-size: 0.875rem;            /* text-sm */
+  font-weight: 700;               /* font-bold */
+  line-height: 1.25rem;           /* leading-5 */
+  color: #ffffff;                 /* text-white */
+  background: #DC3545;            /* bg-destructive-100 (replace with actual color you use) */
+  border: 1px solid transparent;  /* border-transparent */
+  border-radius: 9999px;          /* rounded-full */
+  min-width: 7rem;                /* min-w-28 (28 * .25rem = 7rem) */
+
+  transition: background-color 150ms, box-shadow 150ms; /* transition-colors duration-150 */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* shadow-sm */
+  cursor: pointer;
+}
+
+.btn-disconnect:hover {
+  background: #c82333; /* hover:bg-destructive-200 */
+}
+
+.btn-disconnect:active {
+  background: #c82333; /* active:bg-destructive-200 */
+}
+
+.btn-disconnect:focus {
+  outline: none;                  /* focus:outline-none */
+  box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.5);  /* focus:shadow-2xl */
+}
+
+
 /* -----------------------------------------
    ANIMATIONS
 ------------------------------------------ */
@@ -375,3 +406,96 @@ li {
 .group:hover .tech-tooltip {
   display: flex;
 }
+
+
+.card-interviewer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.5rem;              /* gap-2 */
+  padding: 1.75rem;         /* p-7 */
+  height: 300px;            /* h-[400px] */
+  width: 300px;              /* w-full */
+  flex: 1;                  /* flex-1 */
+  border-radius: 0.5rem;    /* rounded-lg */
+  border: 2px solid rgba(202, 197, 254, 0.5); /* border-primary-200/50 */
+  
+  background: linear-gradient(to bottom, #171532, #08090D); /* blue-gradient-dark */
+
+  /* sm:basis-1/2 */
+}
+@media (min-width: 640px) {
+  .card-interviewer {
+    flex-basis: 50%;
+  }
+}
+
+.avatar {
+  position: relative; 
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+
+  background: linear-gradient(to left, white, #CAC5FE); /* blue-gradient */
+}
+
+.animate-speak {
+  position: absolute;
+  display: inline-flex;
+  width: 83.3333%;         /* 5/6 */
+  height: 83.3333%;
+  border-radius: 9999px;
+  opacity: 0.75;
+  background: rgb(202 197 254); /* primary-200 */
+
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ping animation (Tailwind version in pure CSS) */
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.transcript-border {
+  padding: 0.125rem; /* p-0.5 */
+ 
+  border-radius: 1rem; /* rounded-2xl */
+
+  /* border-gradient (replace with your gradient color) */
+  background: linear-gradient(to right,  #b2afe2, #c3c0f6);
+}
+
+/* Inner container */
+.transcript {
+  display: flex;                 /* flex */
+  align-items: center;           /* items-center */
+  justify-content: center;       /* justify-center */
+
+  min-height: 3rem;              /* min-h-12 */
+  padding: 0.75rem 1.25rem;      /* py-3 px-5 */
+  border-radius: 1rem;           /* rounded-2xl */
+
+  /* dark-gradient background */
+  background: linear-gradient(to bottom, #0d0d13, #23222d);
+}
+
+/* text inside transcript */
+.transcript p {
+  font-size: 1.125rem;           /* text-lg */
+  text-align: center;            /* text-center */
+  color: #ffffff;                /* text-white */
+}
+
+
+
+
+
