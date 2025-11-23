@@ -1,0 +1,67 @@
+import dbConnect from "@/src/lib/dbConnect";
+import { getRandomInterviewCover } from "@/src/lib/utils";
+import Interview from "@/src/models/Interview";
+import {google} from "@ai-sdk/google";
+import { generateText } from 'ai';
+
+
+
+
+export async function POST(request:Request){
+    const {type , role , level , techstack ,amount , userid}=await request.json();
+
+     await dbConnect();
+  try {
+
+    const { text: questions } = await generateText({ //we get this function from the ai and over here we have renamed text to questions
+      model: google("gemini-2.0-flash-001"),
+      prompt: `Prepare questions for a job interview.
+        The job role is ${role}.
+        The job experience level is ${level}.
+        The tech stack used in the job is: ${techstack}.
+        The focus between behavioural and technical questions should lean towards: ${type}.
+        The amount of questions required is: ${amount}.
+        Please return only the questions, without any additional text.
+        The questions are going to be read by a voice assistant so do not use "/" or "*" or any other special characters which might break the voice assistant.
+        Return the questions formatted like this:
+        ["Question 1", "Question 2", "Question 3"]
+        
+        Thank you! <3
+    `,
+    });
+
+    const interview = await Interview.create({
+      role: role,
+      type: type,
+      level: level,
+      amount:amount ,
+      techstack: techstack.split(",") ,
+      questions: JSON.parse(questions), //the ai will return the questions in string format , we are parsing it into an array
+      userId: userid,
+      finalized: true,
+      coverImage: getRandomInterviewCover(), //cover image of the company by which we are getting interviewed ,this function will directly return us the link so we do not need cloudinary or multer
+      createdAt: new Date().toISOString(),
+
+  });
+
+   
+
+    return Response.json({ success: true ,
+                        message:interview
+     }, { status: 200 });
+
+    
+  } catch (error) {
+    console.error("Error:", error);
+    return Response.json({ success: false, error: error }, { status: 500 });
+  }
+}
+
+
+export async function GET() {
+  await dbConnect();
+  const interviews = await Interview.find();
+  return Response.json({ success: true, data: interviews }, { status: 200 });
+}
+
+
