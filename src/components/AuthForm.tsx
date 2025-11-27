@@ -15,6 +15,7 @@ import { ApiResponse } from "../types/ApiResponse"
 import { AxiosError } from "axios";
 import axios from "axios";
 import { signIn } from "next-auth/react";
+import { FormType } from "../types"
 
 
 //defining the zod schema for sign in and sign up

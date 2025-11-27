@@ -5,6 +5,8 @@ import { getRandomInterviewCover } from '../lib/utils';
 import { Button } from './ui/button';
 import Link from 'next/link';
 import DisplayTechIcons from './DisplayTechIcons';
+import { InterviewCardProps } from '../types';
+import { Feedback } from '../types';
 
 const InterviewCard = ({interviewId , userId , role , type , techstack , createdAt}: InterviewCardProps) => {
 
