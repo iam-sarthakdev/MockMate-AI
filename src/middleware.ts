@@ -1,43 +1,24 @@
-import { NextRequest , NextResponse } from "next/server";
-export {default} from "next-auth/middleware"; //MIDDLEWARE RUN KARANE KE LIYE
-import { getToken } from "next-auth/jwt"; //GETTING THE TOKEN
+import { NextRequest, NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
 
+export async function middleware(request: NextRequest) {
+  const token = await getToken({ req: request });
+  const url = request.nextUrl;
 
-export async function middleware(request : NextRequest ){
+  const isAuthPage =
+    url.pathname.startsWith("/sign-in") ||
+    url.pathname.startsWith("/sign-up");
 
-    const token=await getToken({req:request });
-    const url=request.nextUrl; //to find out on which url you are currently at
+  const protectedRoutes = ["/", "/interview"];
+  const isProtected = protectedRoutes.includes(url.pathname);
 
-    //now i am specifying where i can go if i have the token
-    
-    if(token &&
-        (  //if i have the token and i am at any of these routed then i will be redirected to the dashboard page
-            url.pathname.startsWith("/sign-in") ||
-            url.pathname.startsWith("/sign-up") 
-           
+  // Always allow auth pages
+  if (isAuthPage) return NextResponse.next();
 
-        )
-    ){
-            return NextResponse.redirect(new URL("/" , request.url))
-    }
+  // Block protected pages if user not logged in
+  if (isProtected && !token) {
+    return NextResponse.redirect(new URL("/sign-in", request.url));
+  }
 
-    if(!token && url.pathname.startsWith("/")){
-        return NextResponse.redirect(new URL("/sign-in" ,request.url));
-    }
-    
-    return NextResponse.next();
-
-
+  return NextResponse.next();
 }
-
-//kaha kaha pe mujhe middleware run karana hai
-export const config={
-    matcher: [
-        "/sign-in" ,
-        "/sign-up" ,
-        "/" 
-
-    ]
-}
-//jane se phele milke jana
-
