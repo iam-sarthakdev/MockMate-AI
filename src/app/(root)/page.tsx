@@ -32,7 +32,7 @@ const page = async() => {
     </Button>
    </div>
    
-   <Image src="/robot.png" alt="robot image" width={400} height={400}  className="mask-img"></Image>
+   <Image src="/robot.png" alt="robot image" width={400} height={400}  className="mask-img hidden md:block"></Image>
  
    </section>
 
@@ -56,7 +56,7 @@ const page = async() => {
               
               />
             ))
-           ):      <p>You have not taken any inteviews yet</p> 
+           ):      <p className="pl-2">You have not taken any inteviews yet</p> 
           }
     </div>
    </section>
@@ -82,7 +82,7 @@ const page = async() => {
               
               />
             ))
-           ):      <p>There are no new interviews available</p> 
+           ):      <p className="pl-2">There are no new interviews available</p> 
           }
 
         
