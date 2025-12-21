@@ -1,8 +1,6 @@
 import dbConnect from "@/src/lib/dbConnect";
 import { getRandomInterviewCover } from "@/src/lib/utils";
 import Interview from "@/src/models/Interviews";
-import {google} from "@ai-sdk/google";
-import { generateText } from 'ai';
 import mongoose from "mongoose";
 import { groq } from "@/src/lib/groq";
 
@@ -32,7 +30,7 @@ Return the questions formatted like this:
 ["Question 1", "Question 2", "Question 3"]`,
         },
       ],
-      temperature: 0.7,
+      temperature: 0.3,
     });
 
   
