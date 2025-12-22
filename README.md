@@ -179,6 +179,7 @@ This setup ensures secure authentication, reliable data persistence, and smooth 
 
 ```bash
 npm run lint
+```
 
 
 ## ☁️ Deployment
