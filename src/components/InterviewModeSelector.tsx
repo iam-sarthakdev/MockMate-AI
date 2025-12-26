@@ -89,40 +89,84 @@ export const InterviewModeSelector = ({ onModeSelect }: InterviewModeSelectorPro
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: index * 0.1 }}
                                 onClick={() => setSelectedMode(mode.id)}
-                                className={`
-                  glass-panel-strong p-8 rounded-2xl cursor-pointer transition-all
-                  ${isSelected
-                                        ? 'border-2 border-blue-500 shadow-lg shadow-blue-500/25'
-                                        : 'border border-white/10 hover:border-white/20'
-                                    }
-                `}
+                                whileHover={{ y: -8 }}
+                                className="relative cursor-pointer group"
                             >
-                                <div className={`inline-flex p-4 rounded-xl bg-gradient-to-r ${mode.color} mb-4`}>
-                                    <Icon className="w-8 h-8 text-white" />
-                                </div>
+                                {/* Animated glow ring on hover */}
+                                <motion.div
+                                    className={`absolute -inset-1 bg-gradient-to-r ${mode.color} rounded-2xl blur-lg opacity-0 group-hover:opacity-75 transition-opacity duration-500`}
+                                    animate={{
+                                        scale: [1, 1.05, 1],
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }}
+                                />
 
-                                <h3 className="text-2xl font-bold text-white mb-2">{mode.name}</h3>
-                                <p className="text-gray-400 text-sm mb-6">{mode.description}</p>
-
-                                <div className="space-y-2">
-                                    {mode.features.map((feature, i) => (
-                                        <div key={i} className="flex items-center gap-2 text-sm text-gray-300">
-                                            <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${mode.color}`} />
-                                            <span>{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {isSelected && (
+                                <div
+                                    className={`
+                  relative glass-panel-strong p-8 rounded-2xl transition-all duration-300
+                  ${isSelected
+                                            ? 'border-2 border-blue-500 shadow-lg shadow-blue-500/25'
+                                            : 'border border-white/10 group-hover:border-white/30'
+                                        }
+                `}
+                                >
+                                    {/* Icon with rotation and scale on hover */}
                                     <motion.div
-                                        initial={{ scale: 0 }}
-                                        animate={{ scale: 1 }}
-                                        className="mt-6 flex items-center justify-center gap-2 text-blue-400 font-semibold"
+                                        whileHover={{ rotate: 360, scale: 1.1 }}
+                                        transition={{ duration: 0.6, ease: "easeOut" }}
+                                        className={`inline-flex p-4 rounded-xl bg-gradient-to-r ${mode.color} mb-4`}
                                     >
-                                        <Target className="w-5 h-5" />
-                                        <span>Selected</span>
+                                        <Icon className="w-8 h-8 text-white" />
                                     </motion.div>
-                                )}
+
+                                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
+                                        {mode.name}
+                                    </h3>
+                                    <p className="text-gray-400 text-sm mb-6 group-hover:text-gray-300 transition-colors">
+                                        {mode.description}
+                                    </p>
+
+                                    {/* Animated feature list */}
+                                    <div className="space-y-2">
+                                        {mode.features.map((feature, i) => (
+                                            <motion.div
+                                                key={i}
+                                                initial={{ x: 0 }}
+                                                whileHover={{ x: 8 }}
+                                                transition={{ delay: i * 0.05 }}
+                                                className="flex items-center gap-2 text-sm text-gray-300 group-hover:text-white transition-colors"
+                                            >
+                                                <motion.div
+                                                    className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${mode.color}`}
+                                                    animate={{
+                                                        scale: [1, 1.5, 1],
+                                                    }}
+                                                    transition={{
+                                                        duration: 2,
+                                                        repeat: Infinity,
+                                                        delay: i * 0.2
+                                                    }}
+                                                />
+                                                <span>{feature}</span>
+                                            </motion.div>
+                                        ))}
+                                    </div>
+
+                                    {isSelected && (
+                                        <motion.div
+                                            initial={{ scale: 0 }}
+                                            animate={{ scale: 1 }}
+                                            className="mt-6 flex items-center justify-center gap-2 text-blue-400 font-semibold"
+                                        >
+                                            <Target className="w-5 h-5" />
+                                            <span>Selected</span>
+                                        </motion.div>
+                                    )}
+                                </div>
                             </motion.div>
                         );
                     })}

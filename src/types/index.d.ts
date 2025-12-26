@@ -53,7 +53,7 @@ interface AgentProps {
   interviewId?: string;
   feedbackId?: string;
   type: "generate" | "interview";
-  questions?: string[];
+  questions?: string[] | string;  // Allow both for flexibility
   interviewMode?: string;
   isPracticeMode?: boolean;
 }

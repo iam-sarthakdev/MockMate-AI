@@ -132,22 +132,25 @@ const Agent = ({ userName, userId, type, interviewId, questions, interviewMode =
     console.log("Sending to VAPI:", { username: userName, userid: userId });
 
     if (type === "generate") {
-      await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID, {
+      // For generate type, questions is already a formatted string
+      const formattedQuestions = questions || "";
+
+      await vapi.start(interviewer, {
         variableValues: {
-          username: userName,
-          userid: userId
+          questions: formattedQuestions
         }
       });
     } else {
+      // For interview type, questions is an array that needs formatting
       let formattedQuestions = "";
-      if (questions) {
+      if (questions && Array.isArray(questions)) {
         formattedQuestions = questions.map((question: string) => `-${question}`).join('\n');
       }
       await vapi.start(interviewer, {
         variableValues: {
           questions: formattedQuestions
         }
-      })
+      });
     }
   }
 

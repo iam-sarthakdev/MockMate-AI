@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { InterviewModeSelector } from '@/src/components/InterviewModeSelector';
 import Agent from '@/src/components/Agent';
 import { HeroBackground } from '@/src/components/ui/HeroBackground';
+import { getQuestionsByType, formatQuestionsForVAPI } from '@/src/constants/interviewQuestions';
 
 interface InterviewWrapperClientProps {
     userName: string;
@@ -14,10 +15,18 @@ export default function InterviewWrapperClient({ userName, userId }: InterviewWr
     const [interviewStarted, setInterviewStarted] = useState(false);
     const [selectedMode, setSelectedMode] = useState<string | null>(null);
     const [isPracticeMode, setIsPracticeMode] = useState(true);
+    const [structuredQuestions, setStructuredQuestions] = useState<string>('');
 
     const handleModeSelect = (modeId: string, isPractice: boolean) => {
         setSelectedMode(modeId);
         setIsPracticeMode(isPractice);
+
+        // Generate structured questions based on interview type
+        const questionType = modeId as 'behavioral' | 'technical' | 'system-design';
+        const questions = getQuestionsByType(questionType, 10);
+        const formattedQuestions = formatQuestionsForVAPI(questions);
+
+        setStructuredQuestions(formattedQuestions);
         setInterviewStarted(true);
     };
 
@@ -40,6 +49,7 @@ export default function InterviewWrapperClient({ userName, userId }: InterviewWr
                     type="generate"
                     interviewMode={selectedMode || 'behavioral'}
                     isPracticeMode={isPracticeMode}
+                    questions={structuredQuestions}
                 />
             </div>
         </div>
