@@ -74,6 +74,16 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      // Always redirect to dashboard (/) after sign in
+      if (url.startsWith(baseUrl)) {
+        // If redirecting within the same domain, go to root
+        return baseUrl + "/";
+      }
+      // Default to base URL
+      return baseUrl + "/";
+    },
+
     //user se jo bhi info mili wo token me shift krdi
     async jwt({ token, user }: { token: JWT, user: any }) {
 
