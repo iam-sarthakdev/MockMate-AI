@@ -3,8 +3,18 @@
 > **Your Personal AI Interview Coach.**  
 > Master your interviews with real-time voice conversations, adaptive questioning, and instant feedback.
 
-![MockMate AI Banner]
+![MockMate AI Images]
+<img width="1920" height="1080" alt="3" src="https://github.com/user-attachments/assets/b54c74c0-125f-42aa-a0bd-4309f7610822" />
+<img width="1920" height="1080" alt="11" src="https://github.com/user-attachments/assets/a8a3391b-eaab-4cbe-b689-b3e5c51a9656" />
+<img width="1920" height="1080" alt="10" src="https://github.com/user-attachments/assets/81feac80-c722-416c-9221-aa80f8c20712" />
+<img width="1920" height="1080" alt="9" src="https://github.com/user-attachments/assets/e20c0d38-c759-49b2-b708-0b23b7a47435" />
+<img width="1920" height="1078" alt="8" src="https://github.com/user-attachments/assets/916345f2-4ba1-41b6-8e93-ad685924bb62" />
+<img width="1920" height="1077" alt="7" src="https://github.com/user-attachments/assets/c8a86438-f4dd-4fdb-bcab-7ec6c313ed77" />
+<img width="1920" height="1080" alt="6" src="https://github.com/user-attachments/assets/84c0f639-78ec-4c07-83c2-124e88b10ab3" />
+<img width="1920" height="1080" alt="5" src="https://github.com/user-attachments/assets/d3ad6943-d698-44e6-9fbb-08c32a67f85f" />
+<img width="1920" height="1080" alt="4" src="https://github.com/user-attachments/assets/4e4123ca-f1ec-4027-925b-6b82b47ef918" />
 <img width="1920" height="1080" alt="1" src="https://github.com/user-attachments/assets/ebdb3f60-c497-433b-81af-eec79e27a0db" />
+<img width="1920" height="1080" alt="2" src="https://github.com/user-attachments/assets/49975bf9-9735-4e65-a919-bae28ce238d3" />
 
 ## 🚀 Overview
 
@@ -119,5 +129,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ---
 
 <p align="center">
-  Built with ❤️ by [Your Name]
+  Built with ❤️ by [Sarthak Kanoi]
 </p>
