@@ -1,6 +1,6 @@
-# InterviewX 🎤🤖
-
-**InterviewX** is a modern, AI-powered interview practice platform built with **Next.js**, **TypeScript**, and **VAPI**.  
+# MockMate AI 🎤🤖
+ 
+**MockMate AI** is a modern, AI-powered interview practice platform built with **Next.js**, **TypeScript**, and **VAPI**.  
 It enables users to conduct realistic mock interviews, receive AI-generated feedback, and store session history — all within an intuitive and responsive web interface.
 
 ---

@@ -12,7 +12,7 @@ const Header = () => {
      <div className="w-fulll bg-[#07060f] flex justify-between p-3 text-lg font-bold mb-4">
         <Link href="/" className="flex items-center gap-2 m-2">
         <Image src="/logo.png" alt="Logo" height={32} width={38} ></Image>
-        <h2 className="text-primary-100">InterviewX</h2>
+        <h2 className="text-primary-100">MockMateAI</h2>
         </Link>
        
       
