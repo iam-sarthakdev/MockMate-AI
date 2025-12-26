@@ -103,7 +103,8 @@ const AuthForm = ({ type }: { type: FormType }) => {
         //we get sign in url after successful login
         if (result?.url) {
           toast.success("Signed in successfully!");
-          router.replace("/dashboard");
+          // Use window.location for a hard refresh to ensure session is loaded
+          window.location.href = "/";
         }
       }
 
@@ -247,7 +248,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 <Button
                   type="button"
                   className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl py-6 transition-all"
-                  onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+                  onClick={() => signIn("google", { callbackUrl: "/" })}
                 >
                   <Image src="/google.svg" width={20} height={20} alt="google" className="mr-2" />
                   Sign in with Google
@@ -256,7 +257,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 <Button
                   type="button"
                   className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl py-6 transition-all"
-                  onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
+                  onClick={() => signIn("github", { callbackUrl: "/" })}
                 >
                   <Image src="/github.svg" width={20} height={20} alt="github" className="mr-2" />
                   Sign in with GitHub
