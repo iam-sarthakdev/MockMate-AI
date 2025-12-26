@@ -103,8 +103,11 @@ const AuthForm = ({ type }: { type: FormType }) => {
         //we get sign in url after successful login
         if (result?.url) {
           toast.success("Signed in successfully!");
-          // Use window.location for a hard refresh to ensure session is loaded
-          window.location.href = "/";
+          // Wait a moment for session to be established, then redirect
+          setTimeout(() => {
+            router.push("/");
+            router.refresh();
+          }, 100);
         }
       }
 
