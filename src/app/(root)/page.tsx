@@ -6,6 +6,7 @@ import { getCurrentUser } from '@/src/models/User'
 import { getInterviewByUserId, getLatestInterviews } from '@/src/lib/action'
 import { getFeedbackByInterviewId } from '@/src/lib/action'
 import DashboardClient from '@/src/components/DashboardClient'
+import { redirect } from 'next/navigation'
 
 // Force dynamic rendering and disable caching
 export const dynamic = 'force-dynamic'
@@ -13,7 +14,7 @@ export const revalidate = 0
 
 export default async function Page() {
   const user = await getCurrentUser();
-  if (!user) return null;
+  if (!user) redirect('/sign-in');
 
   const userInterviews = await getInterviewByUserId(user?._id.toString());
   const latestInterviews = await getLatestInterviews({ userId: user?._id.toString() });

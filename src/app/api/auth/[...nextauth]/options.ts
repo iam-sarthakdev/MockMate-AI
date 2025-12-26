@@ -131,18 +131,7 @@ export const authOptions: NextAuthOptions = {
     maxAge: 30 * 24 * 60 * 60, // 30 days in seconds
     updateAge: 24 * 60 * 60, // Update session every 24 hours to keep it active
   },
-  cookies: {
-    sessionToken: {
-      name: `next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: 'lax',
-        path: '/',
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 30 * 24 * 60 * 60 // 30 days - matches session maxAge
-      }
-    }
-  },
+
   secret: process.env.NEXTAUTH_SECRET,
 }
 
