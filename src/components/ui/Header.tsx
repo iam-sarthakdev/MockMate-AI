@@ -6,17 +6,18 @@ import { Button } from '@/src/components/ui/button'
 import { signOut } from 'next-auth/react'
 
 
+import { Logo } from '@/src/components/ui/Logo'
+
 const Header = () => {
-  
+
   return (
-     <div className="w-fulll bg-[#07060f] flex justify-between p-3 text-lg font-bold mb-4">
-        <Link href="/" className="flex items-center gap-2 m-2">
-        <Image src="/logo.png" alt="Logo" height={32} width={38} ></Image>
-        <h2 className="text-primary-100">MockMateAI</h2>
-        </Link>
-       
-      
-       <Button className="btn-primary" onClick={()=>signOut({callbackUrl:"/"})}>Logout</Button>
+    <div className="w-full bg-black/50 backdrop-blur-md border-b border-white/10 flex justify-between px-6 py-4 sticky top-0 z-50">
+      <Link href="/landingPage" className="flex items-center">
+        <Logo />
+      </Link>
+
+
+      <Button className="btn-primary" onClick={() => signOut({ callbackUrl: "/" })}>Logout</Button>
     </div>
   )
 }

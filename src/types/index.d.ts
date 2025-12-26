@@ -3,7 +3,7 @@ import NextAuth, { DefaultSession } from "next-auth";
 interface FeedbackType {
   id: string;
   interviewId: string;
-  userId:string;
+  userId: string;
   totalScore: number;
   categoryScores: Array<{
     name: string;
@@ -16,10 +16,10 @@ interface FeedbackType {
   createdAt: string;
 }
 
-interface Category{
+interface Category {
   name: "Communication Skills" | "Technical Knowledge" | "Problem Solving" | "Cultural Fit" | "Confidence and Clarity";
   score: number;
- comment:string;
+  comment: string;
 }
 
 
@@ -54,6 +54,8 @@ interface AgentProps {
   feedbackId?: string;
   type: "generate" | "interview";
   questions?: string[];
+  interviewMode?: string;
+  isPracticeMode?: boolean;
 }
 
 
@@ -121,8 +123,8 @@ declare module "next-auth/jwt" {
   }
 }
 
-export interface Interview extends Document{
-  _id:Types.ObjectId;
+export interface Interview extends Document {
+  _id: Types.ObjectId;
   role: string;
   type: string;
   level: string;
@@ -131,7 +133,7 @@ export interface Interview extends Document{
   userId: Types.ObjectId | string;
   finalized: boolean;
   coverImage: string;
-  amount:number ,
-  createdAt :Date;
+  amount: number,
+  createdAt: Date;
   updatedAt: Date
 }

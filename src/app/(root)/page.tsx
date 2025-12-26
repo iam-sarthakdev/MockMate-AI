@@ -1,96 +1,49 @@
 import { Button } from '@/src/components/ui/button'
+import { HeroBackground } from '@/src/components/ui/HeroBackground'
 import Image from 'next/image'
 import Link from 'next/link'
-import InterviewCard from '@/src/components/InterviewCard'
 import { getCurrentUser } from '@/src/models/User'
 import { getInterviewByUserId, getLatestInterviews } from '@/src/lib/action'
+import { getFeedbackByInterviewId } from '@/src/lib/action'
+import DashboardClient from '@/src/components/DashboardClient'
 
+// Force dynamic rendering and disable caching
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
+export default async function Page() {
+  const user = await getCurrentUser();
+  if (!user) return null;
 
+  const userInterviews = await getInterviewByUserId(user?._id.toString());
+  const latestInterviews = await getLatestInterviews({ userId: user?._id.toString() });
 
-const page = async() => {
-  const user=await getCurrentUser();
-  if(!user) return null;
-  const userInterviews=await getInterviewByUserId(user?._id.toString());
-  const latestInterviews=await getLatestInterviews({userId:user?._id.toString()}); //since there are two arguments for this function
-  if(!userInterviews) return null;
-  if(!latestInterviews) return null;
+  if (!userInterviews || !latestInterviews) return null;
 
-  const hasPastInterviews=userInterviews?.length>0;
-  const hasUpcomingInterviews=latestInterviews.length>0;
+  // Fetch feedback for all interviews upfront to avoid client-side fetching
+  const interviewsWithFeedback = await Promise.all(
+    userInterviews.map(async (interview: any) => {
+      const feedback = await getFeedbackByInterviewId({
+        interviewId: interview._id.toString(),
+        userId: user._id.toString()
+      });
+      return {
+        ...interview,
+        feedback: feedback || null
+      };
+    })
+  );
+
+  // Serialize MongoDB objects to plain JavaScript objects
+  const serializedUser = JSON.parse(JSON.stringify(user));
+  const serializedInterviews = JSON.parse(JSON.stringify(interviewsWithFeedback));
+  const serializedLatest = JSON.parse(JSON.stringify(latestInterviews));
 
   return (
-   <>
-   <section className="card-cta m-3">
-   <div className="flex flex-col gap-6 max-w-sm">
-    <h2>Ace Your Interview with Smart AI Practice & Real-Time Feedback</h2>
-    <p className="text-lg">
-      Practice on real interview questions and get instant feedback
-    </p>
-    <Button asChild className="btn-primary max-sm:w-full">
-      <Link href="/interview">Start an interview</Link>
-    </Button>
-   </div>
-   
-   <Image src="/robot.png" alt="robot image" width={400} height={400}  className="mask-img hidden md:block"></Image>
- 
-   </section>
-
-
-
-   <section className="flex flex-col gap-6 mt-8">
-    <h2 className="m-2">Your interviews</h2>
-    <div className="interviews-section flex flex-wrap">
-       {
-          hasPastInterviews ? (
-            userInterviews?.map((interview )=>(
-              //@ts-ignore
-              <InterviewCard
-               interviewId={interview._id.toString()}
-               userId={interview.userId.toString()}
-               role={interview.role}
-               type={interview.type}
-               techstack={interview.techstack}
-               createdAt={interview.createdAt.toString()}
-               key={interview._id.toString()}
-              
-              />
-            ))
-           ):      <p className="pl-2">You have not taken any inteviews yet</p> 
-          }
-    </div>
-   </section>
-
-
-   <section className="flex flex-col gap-6 mt-8">
-    <h2 className="m-2">Take an interview</h2>
-    <div className="interview-section flex flex-wrap">
-
-        {
-          hasUpcomingInterviews ? (
-            latestInterviews?.map((interview)=>(
-              <InterviewCard 
-                interviewId={interview._id.toString()}
-                userId={interview.userId.toString()}
-                role={interview.role}
-                type={interview.type}
-                techstack={interview.techstack}
-               createdAt={interview.createdAt.toString()}
-               key={interview._id.toString()}
-              
-              
-              
-              />
-            ))
-           ):      <p className="pl-2">There are no new interviews available</p> 
-          }
-
-        
-    
-  </div> 
-   </section>
-   </>
+    <DashboardClient
+      user={serializedUser}
+      userInterviews={serializedInterviews}
+      latestInterviews={serializedLatest}
+    />
   )
 }
-
-export default page
