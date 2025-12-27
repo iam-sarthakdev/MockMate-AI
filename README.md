@@ -95,7 +95,7 @@ Follow these steps to set up the project locally.
    npm run dev
    ```
 
-5. **Open** https://mockmateai-sarthak-kanois-projects.vercel.app/ in your browser.
+5. **Open** https://mockmateai-eight.vercel.app/landingPage in your browser.
 
 ## 📂 Project Structure
 
