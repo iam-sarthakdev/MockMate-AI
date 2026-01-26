@@ -470,7 +470,7 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 | Platform | Link |
 |----------|------|
 | 🐙 **GitHub** | [@iam-sarthakdev](https://github.com/iam-sarthakdev) |
-| 💼 **LinkedIn** | [Sarthak Dev](https://linkedin.com/in/sarthakdev) |
+| 💼 **LinkedIn** | [Sarthak Kanoi](https://www.linkedin.com/in/sarthak-kanoi-b49475362/) |
 | 📧 **Email** | sarthak1712005@gmail.com |
 
 ---
