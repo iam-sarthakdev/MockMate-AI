@@ -70,7 +70,7 @@ export const Testimonials = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
                         Loved by Developers
                     </h2>
                     <p className="text-gray-400 text-lg">
@@ -133,13 +133,13 @@ export const Testimonials = () => {
                     {/* Navigation Buttons */}
                     <button
                         onClick={prev}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-all border border-white/10"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-zinc-900 hover:bg-zinc-800 rounded-full p-3 transition-colors border border-white/10"
                     >
                         <ChevronLeft className="w-6 h-6 text-white" />
                     </button>
                     <button
                         onClick={next}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-all border border-white/10"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-zinc-900 hover:bg-zinc-800 rounded-full p-3 transition-colors border border-white/10"
                     >
                         <ChevronRight className="w-6 h-6 text-white" />
                     </button>
@@ -155,8 +155,8 @@ export const Testimonials = () => {
                                 setIsAutoPlaying(false);
                             }}
                             className={`h-2 rounded-full transition-all ${index === current
-                                    ? 'w-8 bg-blue-500'
-                                    : 'w-2 bg-white/20 hover:bg-white/40'
+                                ? 'w-8 bg-blue-500'
+                                : 'w-2 bg-white/20 hover:bg-white/40'
                                 }`}
                         />
                     ))}

@@ -58,7 +58,7 @@ export const FAQAccordion = () => {
                     viewport={{ once: true }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
                         Frequently Asked Questions
                     </h2>
                     <p className="text-gray-400 text-lg mb-8">

@@ -84,7 +84,7 @@ const StatCard = ({ icon: Icon, label, value, suffix, delay }: any) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.5 }}
-      className="glass-panel-strong p-6 rounded-xl text-center hover-scale"
+      className="glass-panel p-6 rounded-xl text-center hover:border-white/15 transition-colors"
     >
       <div className="flex flex-col items-center gap-3">
         <div className="p-3 rounded-lg bg-blue-500/20 text-blue-400">
@@ -169,18 +169,17 @@ export default function LandingPage() {
       {/* <ParticleBackground /> - Disabled for better performance */}
 
       {/* Navbar */}
-      <nav className="fixed top-0 w-full px-8 md:px-12 py-5 flex items-center justify-between z-[100] bg-black/50 backdrop-blur-xl border-b border-white/10">
+      <nav className="fixed top-0 w-full px-8 md:px-12 py-5 flex items-center justify-between z-[100] bg-black/80 border-b border-white/5">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="flex items-center gap-3 group hover:opacity-80 transition-opacity"
         >
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-md opacity-50 group-hover:opacity-75 transition-opacity" />
-            <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-full">
+            <div className="relative bg-blue-600 p-2 rounded-full">
               <Home className="w-5 h-5 text-white" />
             </div>
           </div>
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+          <span className="text-xl font-bold text-white">
             MockMate AI
           </span>
         </button>
@@ -193,11 +192,10 @@ export default function LandingPage() {
 
       {/* Hero Section - Ultra Premium */}
       <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
-        {/* Animated Gradient Blobs */}
+        {/* Subtle background accents */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-[120px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/8 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/6 rounded-full blur-[120px]" />
         </div>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -227,10 +225,10 @@ export default function LandingPage() {
                 transition={{ delay: 0.3 }}
                 className="text-5xl md:text-7xl font-bold leading-tight"
               >
-                <span className="block mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 drop-shadow-[0_0_50px_rgba(168,85,247,0.6)] animate-pulse">
+                <span className="block mb-2 text-white">
                   Master Your
                 </span>
-                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 drop-shadow-[0_0_60px_rgba(59,130,246,0.5)]">
+                <span className="block text-blue-400">
                   Interviews with AI
                 </span>
               </motion.h1>
@@ -254,12 +252,11 @@ export default function LandingPage() {
               className="flex flex-wrap gap-4"
             >
               <Link href="/sign-up">
-                <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-semibold text-white overflow-hidden hover-scale">
-                  <span className="relative z-10 flex items-center gap-2">
+                <button className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-full font-semibold text-white transition-colors">
+                  <span className="flex items-center gap-2">
                     Get Started Free
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </button>
               </Link>
 
@@ -270,7 +267,7 @@ export default function LandingPage() {
                     howItWorksSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }
                 }}
-                className="px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full font-semibold text-white hover:bg-white/10 transition-all flex items-center gap-2"
+                className="px-8 py-4 bg-white/5 border border-white/10 rounded-full font-semibold text-white hover:bg-white/10 transition-colors flex items-center gap-2"
               >
                 <Video className="w-5 h-5" />
                 Watch Demo
@@ -320,9 +317,9 @@ export default function LandingPage() {
               }}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md"
             >
-              <div className="glass-panel-strong p-6 rounded-3xl shadow-2xl shadow-blue-500/20 border border-white/10">
+              <div className="glass-panel p-6 rounded-2xl shadow-lg border border-white/10">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center">
                     <Brain className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -330,7 +327,7 @@ export default function LandingPage() {
                     <p className="text-gray-400 text-sm">Live Session</p>
                   </div>
                   <div className="ml-auto flex items-center gap-1">
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-green-500" />
                     <span className="text-green-400 text-sm">Active</span>
                   </div>
                 </div>
@@ -348,11 +345,11 @@ export default function LandingPage() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-3 rounded-lg border border-blue-500/20">
+                    <div className="bg-blue-500/10 p-3 rounded-lg border border-blue-500/15">
                       <div className="text-2xl font-bold text-white">92</div>
                       <div className="text-xs text-gray-400">Confidence</div>
                     </div>
-                    <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-3 rounded-lg border border-purple-500/20">
+                    <div className="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/15">
                       <div className="text-2xl font-bold text-white">8.5</div>
                       <div className="text-xs text-gray-400">Score</div>
                     </div>
@@ -373,10 +370,10 @@ export default function LandingPage() {
                 ease: "easeInOut",
                 delay: 0.5
               }}
-              className="absolute top-20 -left-8 glass-panel-strong p-4 rounded-2xl border border-white/10 shadow-xl"
+              className="absolute top-20 -left-8 glass-panel p-4 rounded-xl border border-white/10 shadow-md"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center">
                   <CheckCircle2 className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -398,7 +395,7 @@ export default function LandingPage() {
                 ease: "easeInOut",
                 delay: 1
               }}
-              className="absolute bottom-32 -right-8 glass-panel-strong p-3 rounded-xl border border-white/10 shadow-xl"
+              className="absolute bottom-32 -right-8 glass-panel p-3 rounded-xl border border-white/10 shadow-md"
             >
               <div className="flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-blue-400" />
@@ -421,7 +418,7 @@ export default function LandingPage() {
                 ease: "easeInOut",
                 delay: 1.5
               }}
-              className="absolute top-1/2 -right-12 glass-panel-strong p-3 rounded-xl border border-white/10 shadow-xl"
+              className="absolute top-1/2 -right-12 glass-panel p-3 rounded-xl border border-white/10 shadow-md"
             >
               <div className="flex flex-col items-center">
                 <Target className="w-6 h-6 text-purple-400 mb-1" />
@@ -475,12 +472,12 @@ export default function LandingPage() {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
-                className="group p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-blue-500/30 hover:bg-white/10 transition-all duration-300"
+                className="group p-8 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-blue-500/20 transition-colors"
               >
-                <div className="mb-6 p-3 rounded-lg bg-white/5 w-fit group-hover:scale-110 transition-transform duration-300 ring-1 ring-white/10">
+                <div className="mb-6 p-3 rounded-lg bg-white/5 w-fit transition-colors ring-1 ring-white/[0.06]">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-100 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-xl font-bold mb-3 text-gray-100">
                   {feature.title}
                 </h3>
                 <p className="text-gray-400 leading-relaxed text-sm">
@@ -529,7 +526,7 @@ export default function LandingPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="max-w-5xl mx-auto p-12 rounded-3xl bg-gradient-to-r from-blue-900/40 to-purple-900/40 border border-white/10 backdrop-blur-md text-center"
+          className="max-w-5xl mx-auto p-12 rounded-2xl bg-[#111113] border border-white/[0.08] text-center"
         >
           <h2 className="text-4xl font-bold mb-6">Ready to land your dream job?</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
@@ -537,9 +534,9 @@ export default function LandingPage() {
           </p>
           <Link href="/sign-up">
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 text-lg font-bold rounded-full bg-white text-black shadow-xl hover:shadow-2xl transition-all"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-10 py-4 text-lg font-bold rounded-full bg-white text-black hover:bg-zinc-200 transition-colors"
             >
               Start Practicing Now
             </motion.button>
@@ -548,7 +545,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="text-center py-10 text-gray-500 border-t border-white/5 bg-black/40 backdrop-blur-sm relative z-10">
+      <footer className="text-center py-10 text-gray-500 border-t border-white/5 bg-black relative z-10">
         <p>&copy; 2025 MockMate AI by Sarthak Kanoi</p>
       </footer>
     </div>

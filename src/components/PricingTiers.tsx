@@ -66,7 +66,7 @@ export const PricingTiers = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
                         Simple, Transparent Pricing
                     </h2>
                     <p className="text-gray-400 text-lg">
@@ -84,14 +84,14 @@ export const PricingTiers = () => {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                             className={`relative glass-panel-strong p-8 rounded-2xl border ${plan.popular
-                                    ? 'border-blue-500 scale-105 md:scale-110'
-                                    : 'border-white/10'
+                                ? 'border-blue-500 scale-105 md:scale-110'
+                                : 'border-white/10'
                                 } hover:scale-105 transition-transform duration-300`}
                         >
                             {/* Popular Badge */}
                             {plan.popular && (
                                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                                    <div className="flex items-center gap-1 px-4 py-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-sm font-semibold text-white">
+                                    <div className="flex items-center gap-1 px-4 py-1.5 bg-blue-600 rounded-full text-sm font-semibold text-white">
                                         <Sparkles className="w-4 h-4" />
                                         <span>Most Popular</span>
                                     </div>
@@ -127,8 +127,8 @@ export const PricingTiers = () => {
                             {/* CTA Button */}
                             <button
                                 className={`w-full py-3 rounded-xl font-semibold transition-all ${plan.popular
-                                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90'
-                                        : 'bg-white/10 text-white hover:bg-white/20'
+                                    ? 'bg-blue-600 text-white hover:bg-blue-500'
+                                    : 'bg-white/10 text-white hover:bg-white/20'
                                     }`}
                             >
                                 {plan.cta}

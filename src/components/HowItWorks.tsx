@@ -45,7 +45,7 @@ export const HowItWorks = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
                         How It Works
                     </h2>
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -108,7 +108,7 @@ export const HowItWorks = () => {
                     className="text-center mt-16"
                 >
                     <Link href="/sign-up">
-                        <button className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold hover:opacity-90 transition-all hover-scale inline-flex items-center gap-2">
+                        <button className="group px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-full text-white font-semibold transition-colors inline-flex items-center gap-2">
                             Start Your First Interview
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </button>
